@@ -20,17 +20,19 @@ jobs:
           dotnet-version: '7.0.x'
 
       - name: Restore
-        run: 
-             dotnet restore ./UsersService/UsersService.csproj
-             dotnet restore ./PostsService/PostsService.csproj
-             dotnet restore ./DeliveryService/DeliveryService.csproj
-             dotnet restore ./ApiGateway/ApiGateway.csproj
+        run: |
+          dotnet restore ./UsersService/UsersService.csproj
+          dotnet restore ./PostsService/PostsService.csproj
+          dotnet restore ./DeliveryService/DeliveryService.csproj
+          dotnet restore ./ApiGateway/ApiGateway.csproj
+
 
       - name: Build
-        run: dotnet build ./UsersService/UsersService.csproj --configuration Release --no-restore
-             dotnet build ./PostsService/PostsService.csproj --configuration Release --no-restore
-             dotnet build ./DeliveryService/DeliveryService.csproj --configuration Release --no-restore
-             dotnet build ./ApiGateway/ApiGateway.csproj --configuration Release --no-restore
+        run: |
+          dotnet build ./UsersService/UsersService.csproj --configuration Release --no-restore
+          dotnet build ./PostsService/PostsService.csproj --configuration Release --no-restore
+          dotnet build ./DeliveryService/DeliveryService.csproj --configuration Release --no-restore
+          dotnet build ./ApiGateway/ApiGateway.csproj --configuration Release --no-restore
 
       - name: Test
         run: dotnet test --no-build --verbosity normal
