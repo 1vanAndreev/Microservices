@@ -35,7 +35,12 @@ jobs:
           dotnet build ./ApiGateway/ApiGateway.csproj --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test --no-build --verbosity normal
+        run: |
+          dotnet test ./UsersService/UsersService.csproj --no-build --verbosity normal
+          dotnet test ./PostsService/PostsService.csproj --no-build --verbosity normal
+          dotnet test ./DeliveryService/DeliveryService.csproj --no-build --verbosity normal
+          dotnet test ./ApiGateway/ApiGateway.csproj --no-build --verbosity normal
+
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
