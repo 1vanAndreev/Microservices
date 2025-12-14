@@ -49,7 +49,7 @@ jobs:
       - name: Build and push users-service
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ./UsersService
           file: ./UsersService/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_IVAN }}/users-service:latest
@@ -57,7 +57,7 @@ jobs:
       - name: Build and push posts-service
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ./PostsService
           file: ./PostsService/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_IVAN }}/posts-service:latest
@@ -65,7 +65,7 @@ jobs:
       - name: Build and push delivery-service
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ./DeliveryService
           file: ./DeliveryService/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_IVAN }}/delivery-service:latest
@@ -73,7 +73,7 @@ jobs:
       - name: Build and push apigateway
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ./ApiGateway
           file: ./ApiGateway/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_IVAN }}/apigateway:latest
