@@ -1,0 +1,70 @@
+version: '3.9'
+
+services:
+  users-service:
+    build: ./UsersService
+    container_name: users-service
+    ports:
+      - "8080:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=users-db,1433;Database=UsersDb;User Id=sa;Password=Your_Strong_Password123;TrustServerCertificate=True;
+    depends_on:
+      - db
+    networks:
+      - backend
+
+  posts-service:
+    build: ./PostsService
+    container_name: posts-service
+    ports:
+      - "8090:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=users-db,1433;Database=PostsDb;User Id=sa;Password=Your_Strong_Password123;TrustServerCertificate=True;
+    depends_on:
+      - db
+    networks:
+      - backend
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: users-db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Your_Strong_Password123
+    ports:
+      - "1433:1433"
+    networks:
+      - backend
+
+  apigateway:
+    build:
+      context: ./ApiGateway
+      dockerfile: Dockerfile
+    container_name: apigateway
+    ports:
+      - "8000:80"          # наружу слушаем 8000, внутри 8080
+    depends_on:
+      - users-service
+      - posts-service
+    networks:
+      - backend
+
+  delivery-service:
+    build: ./DeliveryService
+    container_name: delivery-service
+    ports:
+      - "8100:80"               # прямой доступ для отладки (опционально)
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=users-db,1433;Database=PostsDb;User Id=sa;Password=Your_Strong_Password123;TrustServerCertificate=True;
+    depends_on:
+      - db
+    networks:
+      - backend
+
+
+networks:
+  backend:
+    driver: bridge

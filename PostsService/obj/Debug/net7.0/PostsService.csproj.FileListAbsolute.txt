@@ -1,0 +1,8 @@
+C:\Windows\system32\Services\PostsService\obj\Debug\net7.0\PostsService.csproj.AssemblyReference.cache
+C:\Windows\system32\Services\PostsService\obj\Debug\net7.0\rpswa.dswa.cache.json
+C:\Windows\system32\Services\PostsService\obj\Debug\net7.0\PostsService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Windows\system32\Services\PostsService\obj\Debug\net7.0\PostsService.AssemblyInfoInputs.cache
+C:\Windows\system32\Services\PostsService\obj\Debug\net7.0\PostsService.AssemblyInfo.cs
+C:\Windows\system32\Services\PostsService\obj\Debug\net7.0\PostsService.csproj.CoreCompileInputs.cache
+C:\Windows\system32\Services\PostsService\obj\Debug\net7.0\PostsService.MvcApplicationPartsAssemblyInfo.cs
+C:\Windows\system32\Services\PostsService\obj\Debug\net7.0\PostsService.MvcApplicationPartsAssemblyInfo.cache

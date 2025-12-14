@@ -1,0 +1,33 @@
+using Microsoft.EntityFrameworkCore;
+using UsersService.Data; // или то пространство имён, где лежит UsersDbContext
+
+
+var builder = WebApplication.CreateBuilder(args);
+
+
+// Add services to the container.
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
+// здесь регистрируем DbContext
+builder.Services.AddDbContext<UsersDbContext>(options =>
+ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+var app = builder.Build();
+
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+ app.UseSwagger();
+ app.UseSwaggerUI();
+}
+
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+app.Run();
