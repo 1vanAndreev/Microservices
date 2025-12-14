@@ -19,6 +19,7 @@ jobs:
         with:
           dotnet-version: '7.0.x'
 
+
       - name: Restore
         run: |
           dotnet restore ./UsersService/UsersService.csproj
