@@ -58,5 +58,4 @@ Microservices/
 ├── PostsService/
 ├── DeliveryService/
 ├── docker-compose.yml
-├── prometheus.yml
 └── README.md
