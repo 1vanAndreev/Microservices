@@ -1,6 +1,6 @@
 # Blogflow-microservices
 
-Учебный проект по построению **микросервисной архитектуры** на локальной машине с использованием Docker Compose, RabbitMQ, Prometheus, Grafana и GitHub Actions.
+Учебный проект по построению **микросервисной архитектуры** на локальной машине с использованием Docker Compose, Prometheus, Grafana и GitHub Actions.
 
 ## О проекте
 
